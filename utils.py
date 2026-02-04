@@ -134,7 +134,7 @@ CDL_CODE_TO_NAME = {
     227: "Lettuce",
     228: "Dbl Crop Triticale/Corn",
     229: "Pumpkins",
-    230: "Dbl Crop Lettuce/Durum What",
+    230: "Dbl Crop Lettuce/Durum Wheat",
     231: "Dbl Crop Lettuce/Cantaloupe",
     232: "Dbl Crop Lettuce/Cotton",
     233: "Dbl Crop Lettuce/Barley",
@@ -159,7 +159,7 @@ CDL_CODE_TO_NAME = {
 }
 
 
-"""Download crop calendar files into ./data if they don't exist."""
+# Download crop calendar files into ./data if they don't exist."""
 crop_calendar_files = {
     "summer": {"start": "sc_sos_3x3_v2.tiff", "end": "sc_eos_3x3_v2.tiff"},
     "winter": {"start": "wc_sos_3x3_v2.tiff", "end": "wc_eos_3x3_v2.tiff"},

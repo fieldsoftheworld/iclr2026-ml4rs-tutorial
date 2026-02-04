@@ -9,9 +9,9 @@ Tutorial submission for the Machine Learning for Remote Sensing (ML4RS) workshop
 git clone https://github.com/fieldsoftheworld/iclr2026-ml4rs-tutorial.git
 
 # Install the dependencies
-conda env create -f env.yml
+conda env create -f environment.yml
 conda activate ftw-tutorial
-pip install -e '.[dev]'
+pip install '.[dev]'
 
 # Run formatting/linting
 pre-commit run --all-files
