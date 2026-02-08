@@ -24,6 +24,7 @@ jobs:
     - name: Install package
       run: |
         python -m pip install --upgrade pip setuptools
+        python -m pip install --no-build-isolation flatdict
         python -m pip install ".[dev]"
 
     - name: Cache pre-commit hooks
@@ -58,6 +59,7 @@ jobs:
     - name: Install package
       run: |
         python -m pip install --upgrade pip setuptools
+        python -m pip install --no-build-isolation flatdict
         python -m pip install -e ".[dev]"
         python -m pip list | grep ftw
 
