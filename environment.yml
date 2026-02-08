@@ -1,0 +1,13 @@
+name: ftw-tutorial
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.12,<3.14
+  - pip
+  - pip:
+    - ftw-tools[all]==2.0.0b4
+    - geopandas[all]<2
+    - leafmap>=0.50.0,<1
+    - scikit-learn>=1.7.1,<2
+    - zarr>=3.1.0,<4
+    - mgrs==1.5.3
