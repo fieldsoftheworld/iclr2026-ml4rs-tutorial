@@ -9,5 +9,6 @@ dependencies:
     - geopandas[all]<2
     - leafmap>=0.50.0,<1
     - scikit-learn>=1.7.1,<2
+    - torchgeo>=0.8,<0.9
     - zarr>=3.1.0,<4
     - mgrs==1.5.3

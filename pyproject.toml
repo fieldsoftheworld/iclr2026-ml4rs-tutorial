@@ -1,3 +1,7 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [ "setuptools>=61" ]
+
 [project]
 name = "iclr2026-ml4rs-tutorial"
 version = "1.0.0"
@@ -13,6 +17,7 @@ dependencies = [
   "leafmap>=0.50,<1",
   "mgrs==1.5.3",
   "scikit-learn>=1.7.1,<2",
+  "torchgeo>=0.8,<0.9",
   "zarr>=3.1,<4",
 ]
 
@@ -23,6 +28,9 @@ optional-dependencies.dev = [
   "pre-commit",
   "ruff>=0.15,<0.16",
 ]
+
+[tool.setuptools]
+py-modules = [ "utils" ]
 
 [tool.ruff]
 target-version = "py313"
