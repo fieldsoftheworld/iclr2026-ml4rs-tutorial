@@ -321,13 +321,14 @@ def download_cdl(root: str = "data/cdl", year: int = 2023, retries: int = 5) -> 
         try:
             with urllib.request.urlopen(url, timeout=60) as r, open(tmp_path, "wb") as f:
                 shutil.copyfileobj(r, f, length=1 << 20)
-            os.replace(tmp_path, zip_path)
-            return zip_path
         except OSError as e:
             print(f"Attempt {attempt}/{retries} to download {url} failed: {e!s}")
             if attempt == retries:
                 raise
             time.sleep(2**attempt)
+        else:
+            os.replace(tmp_path, zip_path)
+            break
     return zip_path
 
 
