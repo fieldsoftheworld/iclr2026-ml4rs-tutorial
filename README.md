@@ -12,7 +12,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-2ea44f.svg)](LICENSE)
 [![FTW](https://img.shields.io/badge/%F0%9F%8C%8D-fieldsofthe.world-e3b341.svg)](https://fieldsofthe.world)
 
-[Isaac Corley](https://github.com/isaaccorley) · [Hannah Kerner](https://github.com/hannah-rae) · [Caleb Robinson](https://github.com/calebrob6) · Jennifer Marcus
+[Isaac Corley](https://github.com/isaaccorley) · [Hannah Kerner](https://github.com/hannah-rae) · [Caleb Robinson](https://github.com/calebrob6) · [Jennifer Marcus](https://github.com/jen-marcus-taylorgeospatial)
 
 <img src="assets/2024-japan-predictions.png" alt="Country-scale FTW predictions over Japan: planting mosaic, harvest mosaic, and field probability" width="100%">
 
