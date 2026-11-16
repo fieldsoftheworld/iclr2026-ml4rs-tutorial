@@ -5,10 +5,16 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
     - name: Checkout code
       uses: actions/checkout@v6
@@ -39,6 +45,7 @@ jobs:
 
   test-environment:
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 90
     strategy:
       fail-fast: false
       matrix:
@@ -76,9 +83,9 @@ jobs:
     - name: Test notebook 1.0 execution
       env:
         KMP_DUPLICATE_LIB_OK: TRUE
-      run: jupyter nbconvert --to notebook --execute 1.0-agriculture-monitoring-with-ftw.ipynb
+      run: jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=1800 1.0-agriculture-monitoring-with-ftw.ipynb
 
     - name: Test notebook 2.0 execution
       env:
         KMP_DUPLICATE_LIB_OK: TRUE
-      run: jupyter nbconvert --to notebook --execute 2.0-country-scale-field-boundary-predictions.ipynb
+      run: jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=1800 2.0-country-scale-field-boundary-predictions.ipynb
