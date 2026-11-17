@@ -2,7 +2,9 @@ import contextlib
 import json
 import math
 import os
+import shutil
 import subprocess
+import time
 import urllib.request
 from datetime import datetime, timedelta
 from typing import Any
@@ -295,6 +297,39 @@ def download_crop_calendars(crop_calendar_dir: str = "data") -> bool:
                     print(f"Failed to download {filename}: {e!s}")
                     return False
     return True
+
+
+CDL_URL = (
+    "https://www.nass.usda.gov/sites/default/files/Research_and_Science/Cropland/Release/datasets/"
+    "{year}_30m_cdls.zip"
+)
+
+
+def download_cdl(root: str = "data/cdl", year: int = 2023, retries: int = 5) -> str | None:
+    """Download the USDA CDL zip for a year, retrying since the USDA server is flaky.
+
+    Returns the zip path, or None if the extracted GeoTIFF already exists.
+    """
+    if os.path.exists(os.path.join(root, f"{year}_30m_cdls.tif")):
+        return None
+
+    os.makedirs(root, exist_ok=True)
+    url = CDL_URL.format(year=year)
+    zip_path = os.path.join(root, f"{year}_30m_cdls.zip")
+    tmp_path = zip_path + ".part"
+    for attempt in range(1, retries + 1):
+        try:
+            with urllib.request.urlopen(url, timeout=60) as r, open(tmp_path, "wb") as f:
+                shutil.copyfileobj(r, f, length=1 << 20)
+        except OSError as e:
+            print(f"Attempt {attempt}/{retries} to download {url} failed: {e!s}")
+            if attempt == retries:
+                raise
+            time.sleep(2**attempt)
+        else:
+            os.replace(tmp_path, zip_path)
+            break
+    return zip_path
 
 
 def get_best_images(
